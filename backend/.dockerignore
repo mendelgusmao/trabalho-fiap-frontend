@@ -1,0 +1,5 @@
+*
+!src
+!package*.json
+!knexfile.js
+src/database/db.sqlite
