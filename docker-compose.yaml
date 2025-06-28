@@ -1,0 +1,36 @@
+name: leilao-fiap
+services:
+    backend:
+        build:
+            context: ./backend
+            dockerfile: Dockerfile
+        image: leilao-fiap-backend
+        ports:
+            - "3000:3000"
+        environment:
+            - NODE_ENV=production
+        volumes:
+            - ./backend/data:/data
+        restart: unless-stopped
+
+    backend-setup:
+        image: leilao-fiap-backend
+        environment:
+            - NODE_ENV=production
+        command: sh -c "[ ! -f /data/db.sqlite ] && npm run migrate && npm run seed"
+        volumes:
+            - ./backend/data:/data
+        depends_on:
+            - backend
+
+    frontend:
+        build:
+            context: ./frontend
+            dockerfile: Dockerfile
+        image: leilao-fiap-frontend
+        ports:
+            - "3001:80"
+        environment:
+            - VITE_API_URL=http://backend:3000
+            - VITE_SOCKET_URL=http://backend:3000
+        restart: unless-stopped
