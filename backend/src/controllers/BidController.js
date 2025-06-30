@@ -50,9 +50,12 @@ class BidController {
         value,
       }, listing);
 
-      const bidDTO = BidDTO.fromEntity(bid);
+      const bids = await this.bidService.getBidsByListingId(listingId);
+      const latestBids = bids.map(
+        (bid) => BidDTO.fromEntity(bid)
+      );
 
-      this.broadcastService.emit(bidDTO);
+      this.broadcastService.emit("bidCreated", latestBids);
 
       return res.status(201).json(bidDTO);
     } catch (e) {

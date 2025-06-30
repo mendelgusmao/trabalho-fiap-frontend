@@ -12,7 +12,7 @@ class BidService {
 
   async getBidsByListingId(listingId) {
     try {
-      return await this.transaction().where({listingId}).orderBy("id", "desc");
+      return await this.transaction().where({listingId}).orderBy("id", "desc").limit(5);
     } catch (error) {
       console.error(`Error fetching bids for listing ${listingId}:`, error);
       throw error;
