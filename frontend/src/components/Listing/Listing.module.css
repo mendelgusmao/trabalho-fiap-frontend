@@ -1,17 +1,24 @@
-.post {
+.listing {
   background: var(--gray-800);
-  border-radius: 8px;
+  border-radius: 0.75rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
   padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  box-sizing: border-box;
 }
 
-.post + .post {
-  margin-top: 2rem;
+.listing + .listing {
+  margin-top: 0; /* Remove margin for grid layout */
 }
 
 .content {
   line-height: 1.6;
   color: var(--gray-300);
   margin-top: 1.5rem;
+  flex: 1 1 auto;
 }
 
 .content p {
@@ -28,93 +35,41 @@
   color: var(--pink-300);
 }
 
-.post > header {
+.listing > header {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.post > header time {
+.listing > header time {
   font-size: 0.875rem;
   color: var(--gray-400);
 }
 
-.author {
+.product {
   display: flex;
   align-items: center;
   gap: 1rem;
 }
 
-.authorInfo strong {
+.productInfo strong {
   display: block;
   color: var(--gray-100);
   line-height: 1.6;
 }
 
-.authorInfo span {
+.productInfo span {
   display: block;
   font-size: 0.875rem;
   color: var(--gray-400);
   line-height: 1.6;
 }
 
-.commentForm {
-  width: 100%;
-  margin-top: 1.5rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--gray-600);
+/* Ensure uniform spacing inside the tile */
+.listing > * {
+  margin-bottom: 1rem;
 }
 
-.commentForm > strong {
-  line-height: 1.6;
-  color: var(--gray-100);
-}
-
-.commentForm textarea {
-  width: 100%;
-  background: var(--gray-900);
-  border: 0;
-  resize: none;
-  height: 6rem;
-  padding: 1rem;
-  border-radius: 0.25rem;
-  color: var(--gray-100);
-  line-height: 1.4;
-  margin-top: 1rem;
-}
-
-.commentForm footer {
-  visibility: hidden;
-  max-height: 0;
-}
-
-.commentForm:focus-within footer {
-  visibility: visible;
-  max-height: none;
-}
-
-.commentForm button[type="submit"] {
-  padding: 1rem 1.5rem;
-  margin-top: 1rem;
-  border-radius: 8px;
-  border: 0;
-  background: var(--pink-500);
-  color: var(--white);
-  font-weight: bold;
-  cursor: pointer;
-
-  transition: background-color 0.1s;
-}
-
-.commentForm button[type="submit"]:not(:disabled):hover {
-  background: var(--pink-300);
-}
-
-.commentForm button:disabled {
-  opacity: 0.7;
-  cursor: not-allowed;
-}
-
-.commentList {
-  margin-top: 2rem;
+.listing > *:last-child {
+  margin-bottom: 0;
 }

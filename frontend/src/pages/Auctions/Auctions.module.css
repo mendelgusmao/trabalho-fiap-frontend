@@ -1,12 +1,18 @@
 .wrapper {
-  max-width: 70rem;
+  max-width: 90rem;
   margin: 2rem auto;
   padding: 0 1rem;
 
   display: grid;
-  grid-template-columns: 256px 1fr;
+  grid-template-columns: repeat(3, 1fr); /* 5 columns */
   gap: 2rem;
-  align-items: flex-start;
+  align-items: stretch; /* Make all tiles the same height */
+}
+
+@media (max-width: 1200px) {
+  .wrapper {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 @media (max-width: 768px) {

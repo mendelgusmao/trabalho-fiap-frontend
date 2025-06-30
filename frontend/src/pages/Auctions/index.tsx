@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Listing } from "../../components/Listing";
 import { api } from "../../services/api";
+import styles from "./Auctions.module.css";
 
 export function Auctions() {
   const [listings, setListings] = useState([]);
@@ -23,7 +24,11 @@ export function Auctions() {
       {loading ? (
         <div>🔄 Loading listings...</div>
       ) : (
-        listings.map((listing) => <Listing key={listing.id} listing={listing} />)
+        <div className={styles.wrapper}>
+          {listings.map((listing) => (
+            <Listing key={listing.id} listing={listing} />
+          ))}
+        </div>
       )}
     </main>
   );

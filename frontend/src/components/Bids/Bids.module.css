@@ -1,0 +1,89 @@
+.bidsList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.bidItem {
+  display: flex;
+  align-items: center;
+  background: var(--gray-700);
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  padding: 1.25rem 1.5rem;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  transition: background 0.2s;
+  position: relative;
+}
+
+.bidItem:last-child {
+  margin-bottom: 0;
+}
+
+.highestBid {
+  background: linear-gradient(90deg, var(--pink-500) 0%, var(--pink-300) 100%);
+  color: #fff;
+  font-weight: bold;
+  border: 2px solid var(--pink-400);
+  box-shadow: 0 2px 8px rgba(255,0,128,0.08);
+}
+
+.finished .bidder {
+  position: relative;
+  padding-left: 2.2rem;
+}
+
+.finished .bidder::before {
+  content: "🏆";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.5rem;
+}
+
+.bidder {
+  font-weight: 600;
+  color: var(--gray-100);
+  margin-right: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.amount {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--pink-400);
+  margin-right: 1rem;
+}
+
+.time {
+  font-size: 0.9rem;
+  color: var(--gray-400);
+  margin-left: auto;
+}
+
+.finishedBidMessage {
+  background: var(--gray-800);
+  color: var(--pink-500);
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+@media (max-width: 600px) {
+  .bidItem {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+  }
+  .bidder, .amount, .time {
+    margin: 0 0 0.5rem 0;
+  }
+  .time {
+    margin-left: 0;
+  }
+}
