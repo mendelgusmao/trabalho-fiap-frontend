@@ -7,6 +7,8 @@ export function BidForm({ listingId, bidValueSuggestion }) {
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState([]);
 
+  const bidder = `User #${Math.floor(Math.random() * 9999)}`;
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -14,7 +16,7 @@ export function BidForm({ listingId, bidValueSuggestion }) {
     try {
       await api.post(`/listings/${listingId}/bids`, {
         value: parseFloat(value),
-        bidder: 'You',
+        bidder,
       });
       setValue("");
     } catch (err) {
