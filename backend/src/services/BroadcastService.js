@@ -1,21 +1,15 @@
-const { Server } = require("socket.io");
-    
-let server;
-
-function setupBroadcastService(serverInstance) {
-    server = serverInstance;
-};
-
 class BroadcastService {
     constructor() {
-        this.io = new Server(server, {
-            cors: { origin: "*" },
-        });
+        this.io = () => BroadcastService.serverio;
+    }
+
+    static setup(serverio) {
+        BroadcastService.serverio = serverio;
     }
 
     emit(event, data) {
-      this.io.emit(event, data);
+        this.io().emit(event, data);
     }    
 };
 
-module.exports = { setupBroadcastService, BroadcastService };
+module.exports = { BroadcastService };

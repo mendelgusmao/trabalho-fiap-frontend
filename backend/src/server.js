@@ -3,13 +3,18 @@ const cors = require("cors");
 const http = require("http");
 
 const routes = require("./routes");
-const connection = require("./database/connection");
-const { setupBroadcastService } = require("./services/BroadcastService");
+const { BroadcastService } = require("./services/BroadcastService");
+const { Server } = require("socket.io");
 
 const app = express();
 const server = http.createServer(app);
 
-setupBroadcastService(server);
+const socketio = new Server(server, {
+  cors: { origin: "*" },
+  transports: ["websocket"],
+});
+
+BroadcastService.setup(socketio);
 
 app.use(cors());
 app.use(express.json());
