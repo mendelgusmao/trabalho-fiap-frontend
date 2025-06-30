@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ListingProvider } from "./context/ListingContext";
-import { Feed } from "./pages/Feed/";
+import { Auctions } from "./pages/Auctions/";
 import { ListingPage } from "./pages/ListingPage/";
 
 import "./styles/global.css";
@@ -10,7 +10,7 @@ export function App() {
     <ListingProvider>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Feed />} />
+          <Route path="/" element={<Auctions />} />
           <Route path="/listing/" element={<ListingPage />} />
         </Routes>
       </BrowserRouter>

@@ -1,23 +1,12 @@
 import { useEffect, useState } from "react";
 import { Listing } from "../../components/Listing";
-import {
-  socket,
-  setupSocketListeners,
-  cleanupSocketListeners,
-} from "../../services/socket";
 import { api } from "../../services/api";
 
-export function Feed() {
+export function Auctions() {
   const [listings, setListings] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setupSocketListeners({
-      onNewBid: (data) => {
-        console.log(data);
-      },
-    });
-
     api.get("/listings")
       .then((response) => {
         setListings(response.data);
@@ -27,8 +16,6 @@ export function Feed() {
         console.error("Error fetching listings:", error);
         setLoading(false);
       });
-
-    return cleanupSocketListeners;
   }, []);
 
   return (

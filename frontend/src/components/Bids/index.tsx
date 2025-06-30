@@ -1,11 +1,22 @@
 import { useEffect, useState } from "react";
 import styles from "./Bids.module.css";
 import { api } from "../../services/api";
+import { setupSocketListeners, cleanupSocketListeners } from "../../services/socket";
 
 export function Bids({ listingId }) {
   const [bids, setBids] = useState([]);
 
   useEffect(() => {
+    setupSocketListeners({
+      bidCreated: (bids) => {
+        for (let bid of bids) {
+          if (bid.listingId === listingId) {
+            setBids(bids);
+          }
+        }
+      },
+    });
+
     api.get(`/listings/${listingId}/bids`)
       .then((response) => {
         setBids(response.data);
@@ -13,6 +24,8 @@ export function Bids({ listingId }) {
       .catch((error) => {
         console.error("Error fetching bids:", error);
       });
+
+      return cleanupSocketListeners;
     }, []);
 
     return (

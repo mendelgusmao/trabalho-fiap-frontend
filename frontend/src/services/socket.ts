@@ -3,11 +3,11 @@ import { io } from "socket.io-client";
 export const socket = io(import.meta.env.VITE_SOCKET_URL);
 
 export function setupSocketListeners({
-  onNewBid,
+  bidCreated,
 }) {
-  socket.on("onNewBid", onNewBid);
+  socket.on("bidCreated", bidCreated);
 }
 
 export function cleanupSocketListeners() {
-  socket.off("onNewBid");
+  socket.off("bidCreated");
 }
