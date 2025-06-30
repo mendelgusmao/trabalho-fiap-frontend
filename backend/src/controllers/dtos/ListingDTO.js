@@ -7,6 +7,7 @@ class ListingDTO {
       startingPrice: listing.startingPrice,
       sellerName: listing.sellerName,
       imageUrl: listing.imageUrl,
+      status: listing.status,
       createdAt: new Date(listing.createdAt),
       endsAt: new Date(listing.endsAt),
     };
