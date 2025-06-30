@@ -8,12 +8,12 @@ const ListingStatus = {
 class ListingService {
   constructor(connection) {
     this.connection = connection;
-    this.table = this.connection("listings");
+    this.transaction = () => this.connection("listings");
   }
 
   getListings = async () => {
     try {
-      return await this.table.orderBy("createdAt", "desc");
+      return await this.transaction().orderBy("createdAt", "desc");
     } catch (error) {
       console.error('Error fetching listings:', error);
       throw error;
@@ -22,7 +22,7 @@ class ListingService {
 
   getListingById = async (listingId) => {
     try {
-      return await this.table.where({id: listingId}).orderBy("createdAt", "desc").first();
+      return await this.transaction().where({id: listingId}).orderBy("createdAt", "desc").first();
     } catch (error) {
       console.error('Error fetching listings:', error);
       throw error;
