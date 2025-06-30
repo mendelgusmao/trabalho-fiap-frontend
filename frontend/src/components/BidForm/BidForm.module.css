@@ -1,0 +1,48 @@
+.bidForm {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2.5rem; /* Add more space below the form */
+  margin-top: 1.5rem;    /* Add space above the form */
+  align-items: center;
+}
+
+.input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--gray-600);
+  background: var(--gray-800);
+  color: var(--gray-100);
+  font-size: 1rem;
+  transition: border 0.2s;
+}
+
+.input:focus {
+  border-color: var(--pink-400);
+  outline: none;
+}
+
+.button {
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  border: none;
+  background: linear-gradient(90deg, var(--pink-500), var(--pink-300));
+  color: #fff;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.button:disabled {
+  background: var(--gray-600);
+  cursor: not-allowed;
+}
+
+.error {
+  color: var(--pink-400);
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+  width: 100%;
+  text-align: left;
+}
