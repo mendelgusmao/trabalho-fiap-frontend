@@ -22,7 +22,7 @@ class ListingService {
 
   getListingById = async (listingId) => {
     try {
-      return await this.table.where({id: listingId}).orderBy("createdAt", "desc");
+      return await this.table.where({id: listingId}).orderBy("createdAt", "desc").first();
     } catch (error) {
       console.error('Error fetching listings:', error);
       throw error;

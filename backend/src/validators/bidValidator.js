@@ -5,4 +5,4 @@ const bidSchema = z.object({
   value: z.number().positive(),
 });
 
-module.exports = bidSchema;
+module.exports = {bidSchema};
