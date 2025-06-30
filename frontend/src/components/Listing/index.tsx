@@ -1,6 +1,6 @@
 import { Avatar } from "../Avatar";
 
-import styles from "./Post.module.css";
+import styles from "./Listing.module.css";
 import { Bids } from "../Bids";
 
 export function Listing({ listing }) {
