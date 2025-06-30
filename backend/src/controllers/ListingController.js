@@ -12,8 +12,6 @@ class ListingController {
     try {
       const listings = await this.service.getListings();
 
-      console.log(listings);
-
       const listingsDTO = listings.map(
         (listing) => new ListingDTO(listing)
       );

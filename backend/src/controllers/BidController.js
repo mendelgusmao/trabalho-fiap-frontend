@@ -57,8 +57,10 @@ class BidController {
 
       this.broadcastService.emit("bidCreated", latestBids);
 
-      return res.status(201).json(bidDTO);
+      return res.status(201).json(BidDTO.fromEntity(bid));
     } catch (e) {
+      console.log(e);
+
       if (e instanceof BidError) {
         return res.status(409).json({ error: e.message });
       } else {
