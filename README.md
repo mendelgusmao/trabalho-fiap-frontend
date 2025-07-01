@@ -18,7 +18,7 @@ O projeto é uma simples demonstração de um sistema de leilões, onde o princi
 1. **Clone o repositório:**
 
    ```
-   git clone https://github.com:mendelgusmao/trabalho-frontend-fiap
+   git clone git@github.com:mendelgusmao/trabalho-frontend-fiap
    cd trabalho-frontend-fiap
    ```
 
